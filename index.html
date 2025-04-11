@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>btnSprite 視覺化按鍵精靈</title>
+    <style>
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        header {
+            background-color: #4a86e8;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            margin: 0;
+        }
+        .version {
+            font-size: 14px;
+            margin-top: 8px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .main-content {
+            flex: 2;
+            min-width: 300px;
+        }
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .feature {
+            margin-bottom: 30px;
+        }
+        .feature h3 {
+            color: #4a86e8;
+            border-bottom: 2px solid #4a86e8;
+            padding-bottom: 5px;
+        }
+        .download-btn {
+            display: inline-block;
+            background-color: #4a86e8;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .download-btn:hover {
+            background-color: #3a76d8;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: Consolas, monospace;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>btnSprite 視覺化按鍵精靈</h1>
+        <div class="version">版本: 3.1 | 作者: yanchen</div>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <div class="feature">
+                <h2>功能簡介</h2>
+                <p>btnSprite 是一個視覺化的自動按鍵工具，它能夠自動識別螢幕上的特定圖片，執行按鍵操作，並可在停止時發送LINE通知。</p>
+            </div>
+
+            <div class="feature">
+                <h3>使用說明</h3>
+                <ol>
+                    <li>執行 <code>run_key_wizard.bat</code> 或 <code>main.py</code></li>
+                    <li>選取「直接點擊模式」(預設開啟)以解決輸入法問題</li>
+                    <li>點擊「啟動精靈」開始監測螢幕</li>
+                    <li>程序將自動識別圖片並執行點擊操作</li>
+                    <li>點擊「停止精靈」可隨時停止</li>
+                </ol>
+            </div>
+
+            <div class="feature">
+                <h3>輸入法問題解決方案</h3>
+                <p>預設開啟的「直接點擊模式」可解決中文輸入法問題：</p>
+                <ul>
+                    <li>勾選「直接點擊模式」 - 程序將只進行按鈕點擊，不輸入文字</li>
+                    <li>取消勾選 - 程序將嘗試先輸入文字再點擊按鈕</li>
+                </ul>
+                <p>如果還是遇到輸入法問題，請手動將輸入法切換為英文再啟動程序。</p>
+            </div>
+
+            <div class="feature">
+                <h3>設定 LINE 通知</h3>
+                <p>編輯 <code>modules/line_notifier.py</code> 中的兩個變數：</p>
+                <ul>
+                    <li>將 <code>LINE_NOTIFY_TOKEN</code> 替換為您的 LINE Notify 令牌</li>
+                    <li>將 <code>USER_ID</code> 替換為您的 LINE 用戶 ID</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <h3>下載</h3>
+            <p>從 GitHub 下載最新版本：</p>
+            <a href="https://github.com/yanchen184/btnsprite-auto/archive/refs/heads/main.zip" class="download-btn">下載 ZIP</a>
+            <p>或使用 Git 克隆：</p>
+            <code>git clone https://github.com/yanchen184/btnsprite-auto.git</code>
+
+            <h3>必要檔案說明</h3>
+            <ul>
+                <li><code>keep.png</code> - 目標圖片</li>
+                <li><code>btn.png</code> - 按鈕圖片</li>
+                <li><code>approved.png</code> - 核准圖片 (可選)</li>
+                <li><code>stop.png</code> - 停止圖片 (可選)</li>
+            </ul>
+
+            <h3>安裝相依套件</h3>
+            <code>pip install -r requirements.txt</code>
+
+            <h3>疑難排解</h3>
+            <p>若程序自動停止，請檢查:</p>
+            <ul>
+                <li><code>key_wizard.log</code> 檔案中的錯誤信息</li>
+                <li>確保所有圖片文件都存在且格式正確</li>
+                <li>檢查 LINE 通知設定是否正確</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2025 yanchen | <a href="https://github.com/yanchen184/btnsprite-auto">GitHub 專案頁面</a></p>
+    </div>
+</body>
+</html>
